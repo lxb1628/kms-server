@@ -1,4 +1,4 @@
-# Docker使用方法：
+# 使用方法：
 
 只需要绑定1688端口即可对外开放1688 就可以用来激活了
 
@@ -9,7 +9,7 @@
 你只需要使用管理员权限运行cmd执行一句命令就足够：
 
 ```
-slmgr /skms kms.luody.info
+slmgr /skms yourip
 ```
 
 
