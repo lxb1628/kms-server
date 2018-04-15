@@ -23,24 +23,24 @@ fi
 docker build -t kms-server:latest .
 # push kms-server container
 #docker push kms-server:latest
-docker run -d kms-server:latest
-#docker run -d -p 1688:1688 --restart=always --name kms kms-server
+#docker run -d kms-server:latest
+docker run -d -p 1688:1688 --restart=always --name kms kms-server
 
 # create docker-compose.yml Script
-if [ ! -e docker-compose.yml ]; then
-  cat >docker-compose.yml <<-'EOF'
-  version: "3.3"
-  services:
-    kms:
-      image: kms-server:latest
-      restart: always
-      ports:
-        - "1688:1688"
-EOF
-fi
+#if [ ! -e docker-compose.yml ]; then
+#  cat >docker-compose.yml <<-'EOF'
+#  version: "3.3"
+#  services:
+#    kms:
+#      image: kms-server:latest
+#      restart: always
+#      ports:
+#        - "1688:1688"
+#EOF
+#fi
 
 #up docker compose script
-docker-compose up
+#docker-compose up
 
 #clear tmp file
 cd ~ && rm -rf /tmp/docker-kms
