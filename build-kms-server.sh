@@ -28,13 +28,13 @@ docker run -d kms-server:latest
 # create docker-compose.yml Script
 if [ ! -e docker-compose.yml ]; then
   cat >docker-compose.yml <<-'EOF'
-  version "3.3"
-    services:
-      kms:
-        image: kms-server:latest
-        restart: always
-        ports:
-          - "1688:1688"
+                          version "3.3"
+                          services:
+                            kms:
+                            image: kms-server:latest
+                            restart: always
+                            ports:
+                              - "1688:1688"
   EOF
 fi
 
