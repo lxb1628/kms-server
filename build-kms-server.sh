@@ -5,7 +5,7 @@ set -e
 # create Dockerfile Script
 mkdir /tmp/docker-kms/ && cd /tmp/docker-kms/
 if [ ! -e Dockerfile ]; then 
-  cat >Dockerfile <<-'EOF'
+  cat >Dockerfile <<EOF
                   FROM centos
                   RUN cd /tmp/ && curl -L https://github.com/Wind4/vlmcsd/releases/download/svn1111/binaries.tar.gz | tar -zx
                   RUN mv /tmp/binaries/Linux/intel/static/vlmcsdmulti-x64-musl-static /usr/local/bin/vlmcsdmulti-x64-musl-static
@@ -23,7 +23,7 @@ docker run -d kms-server:latest
 
 # create docker-compose.yml Script
 if [ ! -e docker-compose.yml ]; then
-  cat >docker-compose.yml <<-'EOF'
+  cat >docker-compose.yml <<EOF
                           version "3.3"
                           services:
                             kms:
