@@ -3,7 +3,7 @@
 
 # create Dockerfile Script
 mkdir /tmp/docker-kms/ && cd /tmp/docker-kms/
-if [ ! -e Dockerfile ];then 
+if [ ! -e Dockerfile ]; then 
   cat >Dockerfile <<-'EOF'
 #第一行必须指令基于的基础镜像
 FROM centos
@@ -25,7 +25,7 @@ docker build -t kms-server:latest .
 docker run -d kms-server:latest
 
 # create docker-compose.yml Script
-if [ ! -e docker-compose.yml ];then
+if [ ! -e docker-compose.yml ]; then
   cat >docker-compose.yml <<-'EOF'
 version "3.3"
 services:
