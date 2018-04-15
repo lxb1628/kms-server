@@ -1,9 +1,55 @@
-# 使用方法：
+#获取镜像
+## 从registry中拉取镜像：
+```
+$ sudo docker pull registry.cn-shanghai.aliyuncs.com/lxbcloud/kms-server:[镜像版本号]
+```
+其中[ImageId],[镜像版本号]请你根据自己的镜像信息进行填写。
+## 注意您的网络环境：
+>1. 从ECS推送镜像时，可以选择走内网，速度将大大提升，并且将不会损耗您的公网流量。
+>1. 如果您申请的机器是在公共网络，请使用docker pull registry.cn-shanghai.aliyuncs.com 作为镜像名空间前缀
+>1. 如果您申请的机器是在经典网络，请使用 registry-internal.cn-shanghai.aliyuncs.com 作为镜像名空间前缀
+>1. 如果您申请的机器是在vpc网络的，请使用 registry-vpc.cn-shanghai.aliyuncs.com 作为镜像名空间前缀
 
-本脚本仅在CentOS 7 中通过测试。
-感谢：luodaoyi
+## 使用docker tag重命名镜像：
+```
+[root@iZ11ci0wereZ ~]# sudo docker pull registry-internal.cn-shanghai.aliyuncs.com/lxbcloud/kms-server:latest
+latest: Pulling from lxbcloud/kms-server
+469cfcc7a4b3: Already exists 
+bd6759ad1444: Pull complete 
+Digest: sha256:c177365a95eced62e538440130510f6b7c11911a40463a9df69718cd046ae656
+Status: Downloaded newer image for registry-internal.cn-shanghai.aliyuncs.com/lxbcloud/kms-server:latest
+[root@iZ11ci0wereZ ~]# sudo docker images
+REPOSITORY                                                       TAG                 IMAGE ID            CREATED             SIZE
+registry-internal.cn-shanghai.aliyuncs.com/lxbcloud/kms-server   latest              5a623cefde02        12 minutes ago      199MB
+centos                                                           latest              e934aafc2206        8 days ago          199MB
+alpine                                                           latest              3fd9065eaf02        3 months ago        4.15MB
+[root@iZ11ci0wereZ ~]# sudo docker tag 5a623cefde02 kms:latest
+[root@iZ11ci0wereZ ~]# sudo docker images
+REPOSITORY                                                       TAG                 IMAGE ID            CREATED             SIZE
+kms                                                              latest              5a623cefde02        13 minutes ago      199MB
+registry-internal.cn-shanghai.aliyuncs.com/lxbcloud/kms-server   latest              5a623cefde02        13 minutes ago      199MB
+centos                                                           latest              e934aafc2206        8 days ago          199MB
+alpine                                                           latest              3fd9065eaf02        3 months ago        4.15MB
+[root@iZ11ci0wereZ ~]# sudo docker image rm registry-internal.cn-shanghai.aliyuncs.com/lxbcloud/kms-server
+Untagged: registry-internal.cn-shanghai.aliyuncs.com/lxbcloud/kms-server:latest
+Untagged: registry-internal.cn-shanghai.aliyuncs.com/lxbcloud/kms-server@sha256:c177365a95eced62e538440130510f6b7c11911a40463a9df69718cd046ae656
+[root@iZ11ci0wereZ ~]# sudo docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+kms                 latest              5a623cefde02        13 minutes ago      199MB
+centos              latest              e934aafc2206        8 days ago          199MB
+alpine              latest              3fd9065eaf02        3 months ago        4.15MB
+[root@iZ11ci0wereZ ~]# sudo docker run -d -p 1688:1688 --restart=always --name kms kms
+1dfd99cd1179bf566ab49db4e9a3e0c36d131543feba644f623252ce26c12d88
+[root@iZ11ci0wereZ ~]# sudo netstat -anp | grep 1688
+tcp6       0      0 :::1688                 :::*                    LISTEN      10716/docker-proxy  
+[root@iZ11ci0wereZ ~]# sudo docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+1dfd99cd1179        kms                 "/bin/sh -c 'vlmcsd …"   20 seconds ago      Up 19 seconds       0.0.0.0:1688->1688/tcp   kms
+
+```
 
 # 延伸教学：
+
 ## KMS激活使用方法
 
 一般来说，只要确保的下载的是VL批量版本并且没有手动安装过任何key，
