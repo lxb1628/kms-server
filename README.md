@@ -1,4 +1,4 @@
-#获取镜像
+# 获取镜像
 ## 从registry中拉取镜像：
 ```
 $ sudo docker pull registry.cn-shanghai.aliyuncs.com/lxbcloud/kms-server:[镜像版本号]
