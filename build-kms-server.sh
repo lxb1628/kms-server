@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 #description: Build Docker Container script by lxb1628 <lxb1628@163.com>
 
 # create Dockerfile Script
@@ -16,7 +17,7 @@ if [ ! -e Dockerfile ]; then
                   CMD vlmcsdmulti-x64-musl-static vlmcsd -L 0.0.0.0:1688 -e -D
                   #容器暴露端口
                   EXPOSE 1688
-  EOF
+   EOF
 fi
 
 # build kms-server:latest container
