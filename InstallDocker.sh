@@ -5,7 +5,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 clear
-do_start(){
+do_Install(){
 	yum install -y yum-utils device-mapper-persistent-data lvm2 curl
 	yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 	yum install -y docker-ce
@@ -23,7 +23,7 @@ echo "READY TO START?"
 read -p "y/n:" choice
 case $choice in
 	"y")
-	do_start
+	do_Install
 	;;
 	"n")
 	exit 0;
