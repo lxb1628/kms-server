@@ -22,9 +22,8 @@ fi
 # build kms-server:latest container
 docker build -t kms-server:latest .
 # push kms-server container
-docker push kms-server:latest
-
-#docker run -d kms-server:latest
+#docker push kms-server:latest
+docker run -d kms-server:latest
 
 # create docker-compose.yml Script
 if [ ! -e docker-compose.yml ]; then
