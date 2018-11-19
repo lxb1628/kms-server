@@ -14,8 +14,8 @@ if [ ! -e Dockerfile ]; then
   cat >Dockerfile <<-'EOF'
   FROM alpine:latest
   COPY vlmcsd /usr/local/bin/
-  CMD /usr/local/bin/vlmcsd -L 0.0.0.0:1688 -e -D
   EXPOSE 1688
+  CMD /usr/local/bin/vlmcsd -L 0.0.0.0:1688 -e -D
 EOF
 fi
 
