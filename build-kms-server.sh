@@ -14,8 +14,8 @@ if [ ! -e Dockerfile ]; then
   cat >Dockerfile <<-'EOF'
   FROM centos:latest
   ADD vlmcsd /usr/local/bin/
-  CMD vlmcsd -L 0.0.0.0:1688 -e -D
   EXPOSE 1688
+  CMD vlmcsd -L 0.0.0.0:1688 -e -D
 EOF
 fi
 
