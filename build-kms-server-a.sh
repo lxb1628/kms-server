@@ -12,8 +12,8 @@ cd /tmp/docker-kms && rm -rf /tmp/vlmcsd
 # create Dockerfile Script
 if [ ! -e Dockerfile ]; then 
   cat >Dockerfile <<-'EOF'
-  FROM centos:latest
-  ADD vlmcsd /usr/local/bin/
+  FROM alpine:latest
+  COPY vlmcsd /usr/local/bin/
   CMD vlmcsd -L 0.0.0.0:1688 -e -D
   EXPOSE 1688
 EOF
