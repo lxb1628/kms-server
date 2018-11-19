@@ -2,11 +2,11 @@
 set -e
 
 # This script is meant for quick & easy install via:
-#   $ curl -fsSL get.docker.com -o get-docker.sh
+#   $ curl -fsSL https://get.docker.com -o get-docker.sh
 #   $ sh get-docker.sh
 #
 # For test builds (ie. release candidates):
-#   $ curl -fsSL test.docker.com -o test-docker.sh
+#   $ curl -fsSL https://test.docker.com -o test-docker.sh
 #   $ sh test-docker.sh
 #
 # NOTE: Make sure to verify the contents of the script
@@ -61,6 +61,7 @@ aarch64-ubuntu-xenial
 aarch64-ubuntu-bionic
 aarch64-debian-jessie
 aarch64-debian-stretch
+aarch64-debian-buster
 aarch64-fedora-26
 aarch64-fedora-27
 aarch64-fedora-28
@@ -98,7 +99,7 @@ done
 
 case "$mirror" in
 	Aliyun)
-		DOWNLOAD_URL="https://mirrors.aliyun.com/docker-ce"
+		DOWNLOAD_URL="https://mirrors.aliyuncs.com/docker-ce"
 		;;
 	AzureChinaCloud)
 		DOWNLOAD_URL="https://mirror.azure.cn/docker-ce"
@@ -422,7 +423,7 @@ do_install() {
 				$sh_c 'apt-get update -qq >/dev/null'
 			)
 			pkg_version=""
-			if [ ! -z "$VERSION" ]; then
+			if [ -n "$VERSION" ]; then
 				if is_dry_run; then
 					echo "# WARNING: VERSION pinning is not supported in DRY_RUN"
 				else
@@ -465,12 +466,14 @@ do_install() {
 				pkg_manager="dnf"
 				config_manager="dnf config-manager"
 				enable_channel_flag="--set-enabled"
+				disable_channel_flag="--set-disabled"
 				pre_reqs="dnf-plugins-core"
 				pkg_suffix="fc$dist_version"
 			else
 				pkg_manager="yum"
 				config_manager="yum-config-manager"
 				enable_channel_flag="--enable"
+				disable_channel_flag="--disable"
 				pre_reqs="yum-utils"
 				pkg_suffix="el"
 			fi
@@ -482,12 +485,13 @@ do_install() {
 				$sh_c "$config_manager --add-repo $yum_repo"
 
 				if [ "$CHANNEL" != "stable" ]; then
+					$sh_c "$config_manager $disable_channel_flag docker-ce-*"
 					$sh_c "$config_manager $enable_channel_flag docker-ce-$CHANNEL"
 				fi
 				$sh_c "$pkg_manager makecache"
 			)
 			pkg_version=""
-			if [ ! -z "$VERSION" ]; then
+			if [ -n "$VERSION" ]; then
 				if is_dry_run; then
 					echo "# WARNING: VERSION pinning is not supported in DRY_RUN"
 				else
