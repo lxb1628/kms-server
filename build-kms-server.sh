@@ -13,6 +13,7 @@ cd /tmp/docker-kms && rm -rf /tmp/vlmcsd
 if [ ! -e Dockerfile ]; then 
   cat >Dockerfile <<-'EOF'
   FROM centos:latest
+  RUN yum -y update
   ADD vlmcsd /usr/local/bin/
   CMD vlmcsd -L 0.0.0.0:1688 -e -D
   EXPOSE 1688
