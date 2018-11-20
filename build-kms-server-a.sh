@@ -29,7 +29,7 @@ tee >Dockerfile << 'EOF'
   ONBUILD COPY vlmcsd /vlmcsd/
   EXPOSE 1688
   CMD /vlmcsd/vlmcsd -L 0.0.0.0:1688 -e -D
-  EOF
+EOF
 fi
 
 # build kms-server:latest container
