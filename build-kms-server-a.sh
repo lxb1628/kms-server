@@ -25,10 +25,10 @@ tee >Dockerfile << 'EOF'
   wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk && \
   apk add glibc-2.28-r0.apk
 
-  WORKDIR /vlmcsd
-  ONBUILD COPY vlmcsd /vlmcsd/
+  WORKDIR /docker-kms
+  ONBUILD COPY vlmcsd /docker-kms
   EXPOSE 1688
-  CMD /vlmcsd/vlmcsd -L 0.0.0.0:1688 -e -D
+  CMD /docker-kms/vlmcsd -L 0.0.0.0:1688 -e -D
 EOF
 fi
 
