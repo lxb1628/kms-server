@@ -15,11 +15,11 @@ tee >Dockerfile << 'EOF'
   FROM alpine:latest
   MAINTAINER yygfml yygfml@163.com
 
-  ******************更换Alpine源为阿里云******************
+  #******************更换Alpine源为阿里云******************
   RUN echo "https://mirrors.aliyun.com/alpine/v3.8/main" /etc/apk/repositories && \
 	  echo "https://mirrors.aliyun.com/alpine/v3.8/community" >> /etc/apk/repositories
   RUN apk update && apk upgrade
-  ********Alpine安装 Glibc https://github.com/sgerrand/alpine-pkg-glibc **********
+  #********Alpine安装 Glibc https://github.com/sgerrand/alpine-pkg-glibc **********
   RUN apk --no-cache add ca-certificates && \
       wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub && \
 	  wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.27-r0/glibc-2.27-r0.apk && \
