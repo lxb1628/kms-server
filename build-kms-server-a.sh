@@ -16,8 +16,8 @@ tee >Dockerfile << 'EOF'
   MAINTAINER yygfml yygfml@163.com
 
   #******************更换Alpine源为阿里云******************
-  RUN echo "https://mirrors.aliyun.com/alpine/v3.8/main" /etc/apk/repositories && \
-  echo "https://mirrors.aliyun.com/alpine/v3.8/community" >> /etc/apk/repositories
+  #RUN echo "https://mirrors.aliyun.com/alpine/v3.8/main" /etc/apk/repositories && \
+  #echo "https://mirrors.aliyun.com/alpine/v3.8/community" >> /etc/apk/repositories
   RUN apk update && apk upgrade
   #********Alpine安装 Glibc https://github.com/sgerrand/alpine-pkg-glibc **********
   RUN apk --no-cache add ca-certificates && \
