@@ -13,7 +13,6 @@ cd /tmp/docker-kms && rm -rf /tmp/vlmcsd
 if [ ! -e Dockerfile ]; then 
   cat >Dockerfile <<-'EOF'
   FROM centos:latest
-  RUN yum -y update
   ADD vlmcsd /usr/local/bin/
   EXPOSE 1688
   CMD vlmcsd -L 0.0.0.0:1688 -e -D
@@ -22,26 +21,9 @@ fi
 
 # build kms-server:latest container
 docker build -t kms-server:latest .
-# push kms-server container
-#docker push kms-server:latest
+
 #docker run -d kms-server:latest
 docker run -d -p 1688:1688 --restart=always --name kms kms-server
-
-# create docker-compose.yml Script
-#if [ ! -e docker-compose.yml ]; then
-#  cat >docker-compose.yml <<-'EOF'
-#  version: "3.3"
-#  services:
-#    kms:
-#      image: kms-server:latest
-#      restart: always
-#      ports:
-#        - "1688:1688"
-#EOF
-#fi
-
-#up docker compose script
-#docker-compose up
 
 #clear tmp file
 cd ~ && rm -rf /tmp/docker-kms
