@@ -14,7 +14,6 @@ cd /tmp/docker-kms && rm -rf /tmp/binaries*
 if [ ! -e Dockerfile ]; then 
   tee >Dockerfile <<-'EOF'
   FROM alpine:latest
-  MAINTAINER yygfml yygfml@163.com
   ADD vlmcsd /usr/local/bin/
   CMD vlmcsd -L 0.0.0.0:1688 -e -D
   EXPOSE 1688
