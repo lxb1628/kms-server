@@ -18,6 +18,7 @@ if [ ! -e Dockerfile ]; then
   
   # MAINTAINER
   MAINTAINER yygfml<yygfml@163.com>
+  
   # put vlmcsd into /usr/local/bin
   ADD vlmcsd /usr/local/bin
   
