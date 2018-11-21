@@ -12,11 +12,18 @@ cd /tmp/docker-kms && rm -rf /tmp/binaries*
 
 # create Dockerfile Script
 if [ ! -e Dockerfile ]; then 
-  cat >Dockerfile << EOF
+  cat >Dockerfile <<-'EOF'
+  # base image
   FROM alpine:latest
-  ADD vlmcsd /usr/local/bin/
-  EXPOSE 1688
+  
+  # MAINTAINER
+  MAINTAINER yygfml yygfml@163.com
+  # put vlmcsd into /usr/local/bin
+  ADD vlmcsd /usr/local/bin
+  
+  # execute command to compile vlmcsd
   CMD vlmcsd -L 0.0.0.0:1688 -e -D
+  EXPOSE 1688
 EOF
 fi
 
