@@ -17,7 +17,7 @@ if [ ! -e Dockerfile ]; then
   FROM alpine:latest
   
   # MAINTAINER
-  MAINTAINER yygfml yygfml@163.com
+  MAINTAINER yygfml<yygfml@163.com>
   # put vlmcsd into /usr/local/bin
   ADD vlmcsd /usr/local/bin
   
