@@ -12,7 +12,7 @@ cd /tmp/docker-kms && rm -rf /tmp/vlmcsd/binaries
 
 # create Dockerfile Script
 if [ ! -e Dockerfile ]; then 
-  tee >Dockerfile <<'EOF'
+  tee >Dockerfile <<-'EOF'
   FROM alpine:latest
   ADD vlmcsd /usr/local/bin/
   EXPOSE 1688
