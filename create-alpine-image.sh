@@ -8,7 +8,7 @@ cd /tmp/ && wget https://github.com/Wind4/vlmcsd/releases/download/svn1112/binar
 tar -xzvf binaries.tar.gz
 mkdir /tmp/docker-kms
 cd /tmp/binaries/Linux/intel/musl && mv vlmcsdmulti-x64-musl /tmp/docker-kms/vlmcsd
-cd /tmp/docker-kms && rm -rf /tmp/vlmcsd/binaries
+cd /tmp/docker-kms && rm -rf /tmp/vlmcsd/binaries*
 
 # create Dockerfile Script
 if [ ! -e Dockerfile ]; then 
