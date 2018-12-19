@@ -7,6 +7,7 @@ set -e
 #
 
 TMP_DIR=`mktemp -d`
+Work_DIR=`mkimage -d`
 GIT_TAG=svn1112
 cd ${TMP_DIR}
 
@@ -17,10 +18,10 @@ check_result $? 'Download vlmcsd failed.'
 echo 'Extract vlmcsd ...'
 tar -xzvf binaries.tar.gz
 mkdir /tmp/docker-kms
-cp binaries/Linux/intel/musl/vlmcsdmulti-x64-musl /tmp/docker-kms/vlmcsd
+cp binaries/Linux/intel/musl/vlmcsdmulti-x64-musl ${Work_DIR}/vlmcsd
 
 echo 'Create Docker Image ...'
-cd /tmp/docker-kms
+cd ${Work_DIR}
 # create Dockerfile Script
 if [ ! -e Dockerfile ]; then 
   cat >Dockerfile <<-'EOF'
@@ -48,6 +49,6 @@ docker run -d -p 1688:1688 --restart=always --name kms kms-server
 echo 'Cleaning ...'
 cd ~
 rm -rf ${TMP_DIR}
-rm -rf /tmp/docker-kms
+rm -rf ${Work_DIR}
 
 echo 'Installed successfully.'
