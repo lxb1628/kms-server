@@ -7,7 +7,6 @@ set -e
 #
 
 TMP_DIR=`mktemp -d`
-Work_DIR=`mkimage -d`
 GIT_TAG=svn1112
 cd ${TMP_DIR}
 
@@ -18,6 +17,7 @@ check_result $? 'Download vlmcsd failed.'
 echo 'Extract vlmcsd ...'
 tar -xzvf binaries.tar.gz
 mkdir /tmp/docker-kms
+Work_DIR=`mktemp -d`
 cp binaries/Linux/intel/musl/vlmcsdmulti-x64-musl ${Work_DIR}/vlmcsd
 
 echo 'Create Docker Image ...'
