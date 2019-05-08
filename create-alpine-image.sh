@@ -6,6 +6,44 @@ set -e
 #Some Scripts Copyed by Wind4
 #
 
+check_result() {
+  if [ $1 -ne 0 ]; then
+    echo "Error: $2" >&2
+    exit $1
+  fi
+}
+
+if [ "x$(id -u)" != 'x0' ]; then
+  echo 'Error: This script can only be executed by root'
+  exit 1
+fi
+
+if [ -f '/etc/init.d/vlmcsd' ]; then
+  echo 'VLMCSD service has been installed.'
+  exit 1
+fi
+
+if [ ! -f '/bin/tar' ]; then
+  echo 'Installing tar ...'
+  yum -q -y install tar
+  check_result $? "Can't install tar."
+  echo 'Install tar succeed.'
+fi
+
+if [ ! -f '/usr/bin/wget' ]; then
+  echo 'Installing wget ...'
+  yum -q -y install wget
+  check_result $? "Can't install wget."
+  echo 'Install wget succeed.'
+fi
+
+if [ ! -f '/sbin/service' ]; then
+  echo 'Installing initscripts ...'
+  yum -q -y install initscripts
+  check_result $? "Can't install initscripts."
+  echo 'Install initscripts succeed.'
+fi
+
 TMP_DIR=`mktemp -d`
 GIT_TAG=svn1112
 cd ${TMP_DIR}
