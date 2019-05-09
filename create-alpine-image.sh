@@ -44,18 +44,17 @@ if [ ! -f '/sbin/service' ]; then
   echo 'Install initscripts succeed.'
 fi
 
-TMP_DIR=`mktemp -d`
 GIT_TAG=svn1112
+TMP_DIR=`mktemp -d`
 cd ${TMP_DIR}
-
 echo 'Downloading vlmcsd ...'
 wget -q https://github.com/Wind4/vlmcsd/releases/download/${GIT_TAG}/binaries.tar.gz -O binaries.tar.gz
 check_result $? 'Download vlmcsd failed.'
 
 echo 'Extract vlmcsd ...'
 tar -xzvf binaries.tar.gz
-mkdir /tmp/docker-kms
-Work_DIR=`mktemp -d`
+Work_DIR=/tmp/docker-kms
+mkdir ${Work_DIR}
 cp binaries/Linux/intel/musl/vlmcsdmulti-x64-musl ${Work_DIR}/vlmcsd
 
 echo 'Create Docker Image ...'
