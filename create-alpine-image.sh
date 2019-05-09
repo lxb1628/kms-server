@@ -18,11 +18,6 @@ if [ "x$(id -u)" != 'x0' ]; then
   exit 1
 fi
 
-if [ -f '/etc/init.d/vlmcsd' ]; then
-  echo 'VLMCSD service has been installed.'
-  exit 1
-fi
-
 if [ ! -f '/bin/tar' ]; then
   echo 'Installing tar ...'
   yum -q -y install tar
