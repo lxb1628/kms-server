@@ -308,3 +308,13 @@ Authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-u
 | Visio Professional 2010       | 7MCW8-VRQVK-G677T-PDJCM-Q8TCP |
 | Visio Premium 2010            | D9DWC-HPYVV-JGF4P-BTWQB-WX8BJ |
 
+[web]: https://github.com/lxb1628/kms-server/
+[github]: https://github.com/lxb1628/kms-server
+[github-issues]: https://github.com/lxb1628/kms-server/issues
+[release]: https://github.com/lxb1628/kms-server/releases
+[node]: https://nodejs.org
+[material-design-icons]: https://github.com/google/material-design-icons
+
+[license-img]: https://img.shields.io/badge/license-MIT-a0a060.svg?style=flat-square
+[web-img]: https://img.shields.io/badge/web-larsjung.de/h5ai-a0a060.svg?style=flat-square
+[github-img]: https://img.shields.io/badge/github-lrsjng/h5ai-a0a060.svg?style=flat-square
