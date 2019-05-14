@@ -7,9 +7,9 @@ $ sudo docker pull registry.cn-shanghai.aliyuncs.com/lxbcloud/kms-server:[镜像
 其中[ImageId],[镜像版本号]请你根据自己的镜像信息进行填写。
 ## 注意您的网络环境：
 >1. 从ECS推送镜像时，可以选择走内网，速度将大大提升，并且将不会损耗您的公网流量。
->1. 如果您申请的机器是在公共网络，请使用docker pull registry.cn-shanghai.aliyuncs.com 作为镜像名空间前缀
->1. 如果您申请的机器是在经典网络，请使用 registry-internal.cn-shanghai.aliyuncs.com 作为镜像名空间前缀
->1. 如果您申请的机器是在vpc网络的，请使用 registry-vpc.cn-shanghai.aliyuncs.com 作为镜像名空间前缀
+>1. 如果您申请的机器是在公共网络，请使用`docker pull registry.cn-shanghai.aliyuncs.com`作为镜像名空间前缀
+>1. 如果您申请的机器是在经典网络，请使用`registry-internal.cn-shanghai.aliyuncs.com`作为镜像名空间前缀
+>1. 如果您申请的机器是在vpc网络的，请使用`registry-vpc.cn-shanghai.aliyuncs.com`作为镜像名空间前缀
 
 ## 使用docker tag重命名镜像：
 ```
@@ -71,9 +71,8 @@ slmgr /ato
 
 这句命令的意思是，马上对当前设置的key和服务器地址等进行尝试激活操作。
 
-kms激活的前提是你的系统是批量授权版本，即VL版，一般企业版都是VL版，专业版有零售和VL版，家庭版旗舰版OEM版等等那就肯定不能用kms激活。一般建议从[http://msdn.itellyou.cn](http://msdn.itellyou.cn)上面下载系统
-VL版本的镜像一般内置GVLK key，用于kms激活。如果你手动输过其他key，那么这个内置的key就会被替换掉，这个时候如果你想用kms，那么就需要把GVLK key输回去。首先，
-到[https://technet.microsoft.com/en-us/library/jj612867.aspx](https://technet.microsoft.com/en-us/library/jj612867.aspx)
+kms激活的前提是你的系统是批量授权版本，即VL版，一般企业版都是VL版，专业版有零售和VL版，家庭版旗舰版OEM版等等那就肯定不能用kms激活。一般建议从[MSDN，我告诉你](http://msdn.itellyou.cn)上面下载系统
+VL版本的镜像一般内置GVLK key，用于kms激活。如果你手动输过其他key，那么这个内置的key就会被替换掉，这个时候如果你想用kms，那么就需要把GVLK key输回去。首先到[https://technet.microsoft.com/en-us/library/jj612867.aspx](https://technet.microsoft.com/en-us/library/jj612867.aspx)
 获取你对应版本的KEY
 如果打不开下面有对应的
 
@@ -147,7 +146,7 @@ cscript ospp.vbs /act
 >1. 根据出错代码自己搜索出错原因
 
 ## GVLKs
-Authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-us/library/jj612867) and [Windows Server Activation Guide](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys).
+Authoritative source on Microsoft's [TechNet][TechNet-url] and [Windows Server Activation Guide][WSAG-url].
 
 ### Windows 10
 | Operating system edition          | KMS Client Setup Key          |
@@ -307,3 +306,6 @@ Authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-u
 | Visio Standard 2010           | 767HD-QGMWX-8QTDB-9G3R2-KHFGJ |
 | Visio Professional 2010       | 7MCW8-VRQVK-G677T-PDJCM-Q8TCP |
 | Visio Premium 2010            | D9DWC-HPYVV-JGF4P-BTWQB-WX8BJ |
+
+[TechNet-url]:https://technet.microsoft.com/en-us/library/jj612867
+[WSAG-url]:https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys
