@@ -316,5 +316,5 @@ Authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-u
 [material-design-icons]: https://github.com/google/material-design-icons
 
 [license-img]: https://img.shields.io/badge/license-MIT-a0a060.svg?style=flat-square
-[web-img]: https://img.shields.io/badge/web-larsjung.de/h5ai-a0a060.svg?style=flat-square
+[web-img]: https://img.shields.io/appveyor/ci/lxb1628/kms-server.svg?style=flat-square
 [github-img]: https://img.shields.io/badge/github-lrsjng/h5ai-a0a060.svg?style=flat-square
