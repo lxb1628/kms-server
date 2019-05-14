@@ -1,4 +1,4 @@
-[https://img.shields.io/badge/web-kms--server-green.svg]
+[![web][https://img.shields.io/badge/web-kms--server-green.svg][web]
 # 获取镜像
 ## 从registry中拉取镜像：
 ```
