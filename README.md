@@ -1,3 +1,4 @@
+[![license][license-img]][github] [![web][web-img]][web] [![github][github-img]][github]
 # 获取镜像
 ## 从registry中拉取镜像：
 ```
