@@ -1,4 +1,4 @@
-![Travis-CI Build Status](https://travis-ci.org/lxb1628/kms-server)
+[Travis-CI Build Status](https://travis-ci.org/lxb1628/kms-server)
 # 获取镜像
 ## 从registry中拉取镜像：
 ```
