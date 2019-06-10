@@ -1,4 +1,4 @@
-
+https://travis-ci.org/lxb1628/kms-server/jobs/543745601#
 # 获取镜像
 ## 从registry中拉取镜像：
 ```
