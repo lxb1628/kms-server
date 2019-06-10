@@ -1,4 +1,4 @@
-[Travis-CI Build Status](https://travis-ci.org/lxb1628/kms-server)
+[Travis-CI Build Status][Travis-CI-url]
 # 获取镜像
 ## 从registry中拉取镜像：
 ```
@@ -308,5 +308,6 @@ Authoritative source on Microsoft's [TechNet][TechNet-url] and [Windows Server A
 | Visio Premium 2010            | D9DWC-HPYVV-JGF4P-BTWQB-WX8BJ |
 
 [Travis-CI Build Status]:https://travis-ci.org/lxb1628/kms-server.svg?branch=master
+[Travis-CI-url]:https://travis-ci.org/lxb1628/kms-server
 [TechNet-url]:https://technet.microsoft.com/en-us/library/jj612867
 [WSAG-url]:https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys
