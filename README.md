@@ -1,5 +1,5 @@
 # KMS-SERVER
-[![Travis-CI-BuildStatus-img](https://travis-ci.org/lxb1628/kms-server.svg?branch=master)][Travis-CI-url]
+[![Travis-CI-BuildStatus-img]][Travis-CI-url]
 # 获取镜像
 ## 从registry中拉取镜像：
 ```
