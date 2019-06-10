@@ -1,4 +1,4 @@
-![Travis-CI-BuildStatus-img][Travis-CI-url]
+[Travis-CI-BuildStatus-img][Travis-CI-url]
 # 获取镜像
 ## 从registry中拉取镜像：
 ```
