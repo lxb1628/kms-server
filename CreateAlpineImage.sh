@@ -39,7 +39,7 @@ if [ ! -f '/sbin/service' ]; then
   echo 'Install initscripts succeed.'
 fi
 
-GIT_TAG=svn1112
+GIT_TAG=svn1113
 TMP_DIR=`mktemp -d`
 cd ${TMP_DIR}
 echo 'Downloading vlmcsd ...'
