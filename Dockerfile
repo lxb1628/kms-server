@@ -1,5 +1,6 @@
 #
 # Dockerfile for vlmcsd
+# Copyed Wind4/Dock-library
 #
 FROM alpine:3.4
 MAINTAINER Wind4 <puxiaping@gmail.com>
