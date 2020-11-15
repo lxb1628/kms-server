@@ -13,9 +13,10 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 clear
 do_Install(){
-    yum install -y yum-utils
-	yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-	yum install -y device-mapper-persistent-data lvm2 curl docker-ce
+   	yum install -y yum-utils device-mapper-persistent-data lvm2
+	yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+	yum makecache fast
+	yum -y install docker-ce
 	systemctl enable docker
 	systemctl start docker
 	curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
