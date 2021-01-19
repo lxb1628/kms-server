@@ -37,12 +37,12 @@ if [ ! -f '/sbin/service' ]; then
   check_result $? "Can't install initscripts."
   echo 'Install initscripts succeed.'
 fi
-
-GIT_TAG=svn1113
+# prepare the download URL
+GIT_TAG=$(curl -L -s -H 'Accept: application/json' https://github.com/Wind4/vlmcsd/releases/latest | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
 TMP_DIR=`mktemp -d`
 cd ${TMP_DIR}
 echo 'Downloading vlmcsd ...'
-wget -q https://github.com/Wind4/vlmcsd/releases/download/${GIT_TAG}/binaries.tar.gz -O binaries.tar.gz
+curl -sSL https://github.com/Wind4/vlmcsd/releases/download/${GIT_TAG}/binaries.tar.gz -o binaries.tar.gz
 check_result $? 'Download vlmcsd failed.'
 
 echo 'Extract vlmcsd ...'
@@ -57,17 +57,24 @@ cd ${Work_DIR}
 if [ ! -e Dockerfile ]; then 
   cat >Dockerfile <<-'EOF'
   # base image
-  FROM alpine:latest
-  
+  FROM alpine:latest as builder
   # MAINTAINER
   MAINTAINER yygfml<yygfml@163.com>
+  WORKDIR /root
+  RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+  RUN apk update && apk upgrade
+  RUN apk add --no-cache git make build-base && \
+    git clone --branch master --single-branch https://github.com/Wind4/vlmcsd.git && \
+    cd vlmcsd/ && \
+    make
   
+  FROM alpine:latest
+  WORKDIR /root/
   # put vlmcsd into /usr/local/bin
-  ADD vlmcsd /usr/local/bin
-  
+  COPY --from=builder /root/vlmcsd/bin/vlmcsd /usr/bin/vlmcsd
+  EXPOSE 1688/tcp
   # execute command to compile vlmcsd
-  CMD vlmcsd -L 0.0.0.0:1688 -e -D
-  EXPOSE 1688
+  CMD [ "/usr/bin/vlmcsd", "-D", "-d" ]
 EOF
 fi
 
@@ -81,5 +88,6 @@ echo 'Cleaning ...'
 cd ~
 rm -rf ${TMP_DIR}
 rm -rf ${Work_DIR}
+docker rmi $(docker images | grep "^<none>" | awk "{print $3}") 
 
 echo 'Installed successfully.'
