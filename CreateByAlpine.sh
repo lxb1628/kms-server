@@ -1,4 +1,3 @@
-
 #!/bin/sh
 set -e
 #description: Build Docker Container script by lxb1628 <lxb1628@163.com>
